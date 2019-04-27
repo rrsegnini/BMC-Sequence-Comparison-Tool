@@ -6,3 +6,5 @@ Proyecto 1
 Estudiantes:
 Roberto Rojas Segnini - 2016139072
 Pablo Brenes Jiménez - 2016250460
+
+Desarrollado en Python utilizando Django.
