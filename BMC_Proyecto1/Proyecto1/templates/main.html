@@ -1,0 +1,276 @@
+<!--Fuente: https://www.w3schools.com/howto/howto_make_a_website.asp-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Sequence Comparison Tool</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Courier, monospace;;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  padding: 80px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+/* Style the top navigation bar */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Column container */
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  -ms-flex: 30%; /* IE10 */
+  flex: 12%;
+  background-color: #f1f1f1;
+  padding: 12px;
+}
+
+/* Main column */
+.main {
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  display: block;
+  overflow: auto;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  display: block;
+  overflow: auto;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Footer */
+.footer {
+  padding: 10px;
+  text-align: center;
+  background: #ddd;
+  font-size: 10px;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+
+ .slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+}
+
+</style>
+</head>
+<body>
+{{message}}
+<div class="header">
+  <h1> Sequence Comparison Tool</h1>
+  <p>A website created by Roberto Rojas Segnini & Pablo Brenes Jiménez</p>
+</div>
+
+<div class="navbar">
+  <a href="http://localhost:8000/algorithms">Algorithms</a>
+  <a href="http://localhost:8000/main">Lyrics Comparison</a>
+</div>
+
+<div class="row">
+  <div class="side">
+    <h2>Proyecto 1</h2>
+    <p>Introducción a la Biología Molecular Computacional</p>
+    <p>  Grupo 1 </p>
+    <p>  Estudiantes: </p>
+    <p>    Roberto Rojas Segnini - 2016139072 </p>
+    <p>    Pablo Brenes Jiménez - 2016250460</p>
+
+
+  </div>
+  <div class="main">
+
+    <form action="/search/" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+      <label for="search">Artist 1: </label>
+      <input id="artist1" type="text" name="artist1" value="{{ artist }}">
+      <label for="search">Song 1: </label>
+      <input id="song1" type="text" name="song1" value="{{ song1 }}">
+      <input type="file" name="txt_file1" value = {{ txtfile1 }}>
+
+      <!--div class="slidecontainer"-->
+      <!--p>Percentage:</p-->
+      <label for="perc">Percentage: 0 </label>
+      <input type="range" name = "percentage" min="0.01" max="1" value="0.05"  step="0.01">
+      <!--/div--> 1
+
+      <br><br/>
+      <label for="search2">Artist 2: </label>
+      <input id="artist2" type="text" name="artist2" value="{{ artist2 }}">
+      <label for="search2">Song 2: </label>
+      <input id="song2" type="text" name="song2" value="{{ song2 }}">
+
+      <input type="file" name="txt_file2" value = {{ txtfile2 }}>
+
+      <label for="perc">Segments:      0 </label>
+      <input type="range" name = "segments" min="0.01" max="1" value="0.05"  step="0.01">
+      1
+
+      <input type="submit" value="OK">
+    </form>
+
+    <br>
+
+    </form>
+    <div class="row">
+    <div class="column" style="background-color:#aaa;">
+
+      <h2>{{artist}} - {{song1}}</h2>
+      <p>{{Lyrics1 | safe}}</p>
+      <br>
+
+
+    </div>
+
+
+    <div class="column" style="background-color:#bbb;">
+
+      <h2>{{artist2}} - {{song2}}</h2>
+      <p>{{Lyrics2 | safe}}</p>
+      <br>
+
+
+    </div>
+
+  </div>
+      <div class="row">
+    <div class="column" style="background-color:#aaa;">
+
+      <h2>Similitudes encontradas</h2>
+      {% for element in SimilLyrics1%}
+      <p>{{element | safe}} <br> </p>
+      {%endfor%}
+
+    </div>
+
+
+    <div class="column" style="background-color:#bbb;">
+      <br>
+      {% for element in SimilLyrics2%}
+      <p>{{element | safe}} <br> </p>
+      {%endfor%}
+
+    </div>
+      <h2>Elapsed time: {{ElapsedTime}}</h2>
+  </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Created with <3 en el TEC</h2>
+</div>
+
+</body>
+</html>

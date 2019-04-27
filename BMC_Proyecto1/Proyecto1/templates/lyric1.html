@@ -1,0 +1,13 @@
+<div class="column" style="background-color:#aaa;">
+      <form action="/search/" method="post">
+      {%csrf_token%}
+      <label for="search">Search artist: </label>
+      <input id="artist1" type="text" name="artist" value="{{ current_name }}">
+      <input type="submit" value="OK">
+    </form>
+      <h2>Select the first artist to display the songs</h2>
+      {% for element in artists %}
+        <a href="url">{{element}}</a>
+      {% endfor %}
+      <p>Some text..</p>
+</div>
